@@ -275,7 +275,7 @@ void head_goto_xy(int x_angle, int y_angle, int del) {
 }
 
 // ---  eye routines
-void cleareyes(Adafruit_NeoPixel eye) {
+void cleareye(Adafruit_NeoPixel eye) {
   eye.setBrightness(0);
   eye.show();
   eye.setBrightness(255);
@@ -332,7 +332,7 @@ void eyes_circlefade(Adafruit_NeoPixel eye) {
     eye.setPixelColor(rndpix    , rndbrt, 25, 25);
     eye.show();
     delay(10);
-    cleareyes();
+    cleareye(eye);
     delay(10);
   }
 }
@@ -343,24 +343,24 @@ void eyes_topdown(Adafruit_NeoPixel eye) {
   eye.setPixelColor(1    , 255, 0, 0);
   eye.show();
   delay(del);
-  cleareyes();
+  cleareye(eye);
   eye.setPixelColor(0, 255,255,255);
   eye.setPixelColor(2    , 255, 0, 0);
   eye.setPixelColor(6    , 255, 0, 0);
   eye.show();
   delay(del);
-  cleareyes();
+  cleareye(eye);
   eye.setPixelColor(0, 255,255,255);
   eye.setPixelColor(3    , 255, 0, 0);
   eye.setPixelColor(5    , 255, 0, 0);
   eye.show();
   delay(del);
-  cleareyes();
+  cleareye(eye);
   eye.setPixelColor(0, 255,255,255);
   eye.setPixelColor(4    , 255, 0, 0);
   eye.show();
   delay(del);
-  cleareyes();
+  cleareye(eye);
   eye.setPixelColor(0, 255,255,255);
   eye.show();
 }
@@ -371,24 +371,24 @@ void eyes_bottomup(Adafruit_NeoPixel eye) {
   eye.setPixelColor(4    , 255, 0, 0);
   eye.show();
   delay(del);
-  cleareyes();
+  cleareye(eye);
   eye.setPixelColor(0, 255,255,255);
   eye.setPixelColor(3    , 255, 0, 0);
   eye.setPixelColor(5    , 255, 0, 0);
   eye.show();
   delay(del);
-  cleareyes();
+  cleareye(eye);
   eye.setPixelColor(0, 255,255,255);
   eye.setPixelColor(2    , 255, 0, 0);
   eye.setPixelColor(6    , 255, 0, 0);
   eye.show();
   delay(del);
-  cleareyes();
+  cleareye(eye);
   eye.setPixelColor(0, 255,255,255);
   eye.setPixelColor(1    , 255, 0, 0);
   eye.show();
   delay(del);
-  cleareyes(eye);
+  cleareye(eye);
   eye.setPixelColor(0, 255,255,255);
   eye.show();
 }
@@ -442,6 +442,13 @@ void eyes_lookleft(Adafruit_NeoPixel eye) {
   eye.show();
 }
 
+void eyes_justpupil(Adafruit_NeoPixel eye, int R, int G, int B) {
+  if ((R > 255) || (R < 0)) { R = 0; }
+  if ((G > 255) || (G < 0)) { R = 0; }
+  if ((B > 255) || (B < 0)) { R = 0; }
+  cleareye(eye);
+  eye.setPixelColor(0, R, G, B);
+}
 
 /**** debug routines ***/
 
